@@ -29,8 +29,8 @@ def get_spatial_transform(opt):
         normalize = get_normalize_method(opt.mean, opt.std, opt.no_mean_norm,
                                      opt.no_std_norm)
         spatial_transform = [Resize(opt.sample_size)]
-        #if opt.inference_crop == 'center':
-        #    spatial_transform.append(CenterCrop(opt.sample_size))
+        if opt.inference_crop == 'center':
+            spatial_transform.append(CenterCrop(opt.sample_size))
         spatial_transform.append(ToTensor())
         spatial_transform.extend([ScaleValue(opt.value_scale), normalize])
         spatial_transform = Compose(spatial_transform)
