@@ -56,7 +56,7 @@ def predict(clip, model, spatial_transform, classes):
     # don't calculate grads
     with torch.no_grad():
         # apply model to input
-        outputs = model(clip)
+        outputs = model(clip.cuda())
         # apply softmax and move from gpu to cpu
         outputs = F.softmax(outputs, dim=1).cpu()
         # get best class
@@ -74,6 +74,8 @@ opt.n_input_channels = 3
 opt.mean, opt.std = get_mean_std(opt.value_scale, dataset=opt.mean_dataset)
 model = generate_model(opt)
 model.fc = nn.Linear(model.fc.in_features, 2)
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+model.to( device )
 pretrain_path = '/DATA/disk1/machinelp/3D-ResNets-PyTorch/qpark_action_2/results/save_30.pth'
 # pretrain_path = '/DATA/disk1/machinelp/3D-ResNets-PyTorch/qpark_action_2/r3d50_KM_200ep.pth'
 pretrain = torch.load(pretrain_path, map_location='cpu') 
