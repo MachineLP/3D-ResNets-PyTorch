@@ -33,7 +33,7 @@ def parse_opts():
         'Number of classes (activitynet: 200, kinetics: 400 or 600, ucf101: 101, hmdb51: 51)'
     )
     parser.add_argument('--n_pretrain_classes',
-                        default=0,
+                        default=1039,
                         type=int,
                         help=('Number of classes of pretraining task.'
                               'When using --pretrain_path, this must be set.'))
