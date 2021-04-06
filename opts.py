@@ -90,7 +90,7 @@ def parse_opts():
                               'random is uniform. '
                               '(random | center)'))
     parser.add_argument('--learning_rate',
-                        default=0.1,
+                        default=0.01,
                         type=float,
                         help=('Initial learning rate'
                               '(divided by 10 while training by lr scheduler)'))
