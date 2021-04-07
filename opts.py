@@ -221,7 +221,7 @@ def parse_opts():
         help=
         '(resnet | resnet2p1d | preresnet | wideresnet | resnext | densenet | ')
     parser.add_argument('--model_depth',
-                        default=18,
+                        default=50,
                         type=int,
                         help='Depth of resnet (10 | 18 | 34 | 50 | 101)')
     parser.add_argument('--conv1_t_size',
